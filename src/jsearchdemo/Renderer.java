@@ -1,3 +1,5 @@
+package jsearchdemo;
+
 import java.awt.Color;
 
 abstract class Renderer implements ThingWithProperties {

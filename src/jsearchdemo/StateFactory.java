@@ -1,3 +1,5 @@
+package jsearchdemo;
+
 class StateFactory {
 
     private GraphRenderer boss;

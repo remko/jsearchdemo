@@ -1,3 +1,5 @@
+package jsearchdemo;
+
 import java.awt.event.*;
 
 class IgnoreAll implements MouseListener, MouseMotionListener, ActionListener {

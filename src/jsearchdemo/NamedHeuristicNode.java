@@ -1,3 +1,5 @@
+package jsearchdemo;
+
 import search.*;
 
 public class NamedHeuristicNode extends NamedNode implements HeuristicNode

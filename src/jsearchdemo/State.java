@@ -1,3 +1,5 @@
+package jsearchdemo;
+
 import java.awt.event.*;
 
 abstract class State extends IgnoreAll {

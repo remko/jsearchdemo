@@ -1,3 +1,5 @@
+package jsearchdemo;
+
 import search.*;
 
 public interface StateListener 

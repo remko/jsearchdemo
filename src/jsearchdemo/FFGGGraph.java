@@ -1,3 +1,5 @@
+package jsearchdemo;
+
 import java.util.LinkedList;
 import java.util.List;
 import search.*;

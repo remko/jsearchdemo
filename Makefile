@@ -20,11 +20,7 @@ SRC_DIR=src
 JAR_FILE=JSearchDemo.jar
 MANIFEST_FILE=$(SRC_DIR)/Manifest.mf
 
-JAVADOC_SOURCES=$(filter-out \
-			%/AlgorithmListener.java %/StateListener.java \
-			%/DomainTests.java \
-			%/GraphPanel.java %/LookMommyImAnApplet.java \
-			,$(wildcard $(SRC_DIR)/*.java))
+JAVADOC_SOURCES=search jsearchdemo
 
 ZIP_FILE=JSearchDemo.zip
 
@@ -32,7 +28,8 @@ SOURCES_FILE=JSearchDemo.tgz
 
 #################################### Rules #################################
 
-all: $(SOURCES_FILE) $(JAR_FILE) $(ZIP_FILE) docs
+#all: $(SOURCES_FILE) $(JAR_FILE) $(ZIP_FILE) docs
+all: jsearchdemo docs
 
 .PHONY: install
 install: $(SOURCES_FILE) $(JAR_FILE) $(ZIP_FILE)
@@ -50,15 +47,20 @@ docs:
 
 .PHONY: clean
 clean:
-	-rm -rf $(DOC_DIR) $(SRC_DIR)/*.class $(JAR_FILE) $(ZIP_FILE) \
+	-rm -rf $(DOC_DIR) $(SRC_DIR)/*.class $(SRC_DIR)/search/*.class \
+		$(SRC_DIR)/jsearchdemo/*.class $(JAR_FILE) $(ZIP_FILE) \
 		$(SOURCES_FILE)
 
-$(JAR_FILE) $(ZIP_FILE): $(SRC_DIR)/*.java
+.PHONY: jsearchdemo
+jsearchdemo: $(SRC_DIR)/jsearchdemo/*.java
 	$(JAVAC) $(JAVAC_FLAGS) -sourcepath $(SRC_DIR) \
-		`find $(SRC_DIR) -name "*.java"`
-	cd $(SRC_DIR) && $(JAR) cmf ../$(MANIFEST_FILE) ../$(JAR_FILE) \
-		`find . -name "*.class"`
-	cd $(SRC_DIR) && zip -q -r ../$(ZIP_FILE) `find . -name "*.class"`
+		`find $(SRC_DIR)/jsearchdemo -name "*.java"`
+	cd $(SRC_DIR) && $(JAR) cmf jsearchdemo/Manifest.mf ../JSearchDemo.jar \
+		`find jsearchdemo -name "*.class"` \
+		`find search -name "*.class"`
+	cd $(SRC_DIR) && zip -q -r ../$(ZIP_FILE)  \
+		`find jsearchdemo -name "*.class"` \
+		`find search -name "*.class"`
 
 $(SOURCES_FILE): $(SRC_DIR)/*.java
 	make clean

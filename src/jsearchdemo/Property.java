@@ -1,3 +1,5 @@
+package jsearchdemo;
+
 interface Property {
 
     String get();

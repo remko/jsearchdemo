@@ -1,3 +1,5 @@
+package jsearchdemo;
+
 import java.applet.*;
 
 public class LookMommyImAnApplet extends Applet {

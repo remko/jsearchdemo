@@ -1,3 +1,5 @@
+package jsearchdemo;
+
 import java.text.*;
 
 class NodeFactory {

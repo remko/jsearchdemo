@@ -1,3 +1,5 @@
+package jsearchdemo;
+
 import javax.swing.*;
 import java.awt.*;
 import search.*;
