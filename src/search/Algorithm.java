@@ -2,6 +2,7 @@ package search;
 
 import java.util.LinkedList;
 
+
 /**
  * The base class for a search algorithm.
  * Each search algorithm is constructed with a graph as its target. 
@@ -25,9 +26,7 @@ public abstract class Algorithm
 	public Algorithm(Graph graph) {
 		//assert graph != null;
 		_graph = graph;
-        
-		Path p = new Path(graph,getGraph().getStartNode());
-		_queue.addFront(p);
+		_queue.addFront(getGraph().getInitialPath());
 	}
 
     
@@ -40,42 +39,42 @@ public abstract class Algorithm
 			doStep();
 	}
 
-    /**
-     * Executes one loop of the algorithm.
-     */
-    protected abstract void doStep();
+	/**
+	 * Executes one loop of the algorithm.
+	 */
+	protected abstract void doStep();
     
-    /**
+	/**
      * Checks if the algorithm is finished.
      *
      * @return <tt>true</tt> if the algorithm is finished (i.e. the queue is 
-     *                  empty or the goal is reached), false otherwise.
+     *     	 	empty or the goal is reached), false otherwise.
      */
-    public boolean finished() {
-        return (getQueue().isEmpty() ||
-            getQueue().contains(getGraph().getGoalNode()));
-    } 
+	public boolean finished() {
+		return (getQueue().isEmpty() || getQueue().goalReached());
+		
+	}
     
     
-    /**
-     * Retrieves the graph the algorithm is working on.
-     */
-    public Graph getGraph() { 
-        return _graph; 
-    }
+	/**
+	 * Retrieves the graph the algorithm is working on.
+	 */
+	public Graph getGraph() { 
+		return _graph; 
+	}
     
     
-    /**
-     * Retrieves the current queue of the algorithm.
-     */
-    public Queue getQueue() { 
-        return _queue; 
-    }
+	/**
+	 * Retrieves the current queue of the algorithm.
+	 */
+	public Queue getQueue() { 
+		return _queue; 
+	}
 
-    /**
-     * Retrieves the textual representation of the state of the algorithm.
-     */
-    public String getStateString() {
-        return getQueue().toString();
-    }
+	/**
+	 * Retrieves the textual representation of the state of the algorithm.
+	 */
+	public String getStateString() {
+		return getQueue().toString();
+	}
 }

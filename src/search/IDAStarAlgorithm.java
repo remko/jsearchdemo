@@ -55,8 +55,7 @@ public class IDAStarAlgorithm extends EEUniformCostAlgorithm
     }
 
     public boolean finished() {
-        return (fixedPointReached || 
-                    getQueue().contains(getGraph().getGoalNode()));
+        return (fixedPointReached || getQueue().goalReached());
     }
     
     

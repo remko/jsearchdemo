@@ -180,4 +180,19 @@ public class Queue
         }
 	    return false;
     }
+
+
+	/**
+	 * Checks if the goal node is reached by a path in the queue.
+	 * 
+	 * @return <tt>true</tt> if the goal node is reached by a path in the queue.
+	 */
+	public boolean goalReached() {
+		for (Iterator it = getPaths().iterator(); it.hasNext(); ) {
+            Path p = (Path) it.next();
+            if (p.goalReached())
+                return true;
+        }
+	    return false;
+	}
 }

@@ -185,4 +185,12 @@ public class UndirectedGraph extends Graph
         }        
         return s;
     }
+    
+    
+	/* (non-Javadoc)
+	 * @see search.Graph#getInitialPath()
+	 */
+	public Path getInitialPath() {
+		return new UndirectedPath(this,getStartNode());
+	}
 }

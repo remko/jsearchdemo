@@ -7,7 +7,7 @@ import search.*;
  *
  * @author Remko Tron&ccedil;on
  */
-public class NamedNode extends Node
+public class NamedNode extends Node implements Comparable
 {
     private String _name;
 

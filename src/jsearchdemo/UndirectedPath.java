@@ -1,22 +1,21 @@
-package search;
+package jsearchdemo;
 
 import java.util.List;
 import java.util.LinkedList;
 import java.util.Iterator;
 
+import search.*;
+
 
 /**
- * A class for paths.
+ * A class for paths for undirected graphs.
  * 
  * @author Remko Tron&ccedil;on
  */
-public class Path implements Cloneable
+public class UndirectedPath extends Path
 {
-	private Node _startNode;
-    private LinkedList _edges = new LinkedList();
-    private Graph _graph;
-
-    
+    private LinkedList _nodes = new LinkedList();
+        
     /**
      * Constructs a path.
      *
@@ -24,21 +23,15 @@ public class Path implements Cloneable
      *              <tt>null</tt>.
      * @param start The start node of the path. Cannot be <tt>null</tt>.
      */ 
-    public Path(Graph graph, Node start) {
-        // assert graph != null && start != null;
-        _graph = graph;
-        _startNode = start;
+    public UndirectedPath(Graph graph, Node start) {
+    	super(graph,start);
+    	_nodes.add(start);
     }
     
-    /**
-     * Constructs a copy of a path.
-     * 
-     * @param p the path to copy
-     */
-    public Path(Path p) {
-    	_graph = p._graph;
-    	_startNode = p._startNode;
-    	_edges = (LinkedList) p._edges.clone();
+    
+    public UndirectedPath(UndirectedPath p) {
+    	super(p);
+    	_nodes = (LinkedList) p._nodes.clone();
     }
     
     
@@ -51,12 +44,13 @@ public class Path implements Cloneable
      */
     public List getChildren() {
         LinkedList childrenPaths = new LinkedList();
-        List childrenEdges = _graph.getOutgoingEdges(getEndNode());
+        List childrenEdges = getGraph().getOutgoingEdges(getEndNode());
         for (Iterator it = childrenEdges.iterator(); it.hasNext(); ) {
             Edge e = (Edge) it.next();
             /* Loop check */
-            if (!contains(e.getEndNode())) {
-                Path p = (Path) clone();
+            if (!contains(e.getBeginNode()) 
+                    || !contains(e.getEndNode())) {
+                UndirectedPath p = (UndirectedPath) clone();
                 p.addEdge(e);
                 childrenPaths.add(p);
             }
@@ -70,10 +64,7 @@ public class Path implements Cloneable
      * Retrieves the last node of this path.
      */
     public Node getEndNode() {
-    	if (_edges.isEmpty())
-    		return _startNode;    	
-    	else
-    		return ((Edge) _edges.getLast()).getEndNode();
+        return (Node) _nodes.getLast();
     }
 
 
@@ -85,39 +76,26 @@ public class Path implements Cloneable
      *         otherwise.
      */
     public boolean contains(Node n) {
-    	if (n==null) return false;
-    	if (_startNode.equals(n)) return true;
-    	for (Iterator it = _edges.iterator(); it.hasNext();) {
-    		if (((Edge) it.next()).getEndNode().equals(n))
-    			return true;
-    	}
-    	return false;
+        if (n==null) return false;
+        return _nodes.contains(n);
     }
 
 
     /**
      * Adds an edge to the end of this path.
-     * Assumes that the edge can be added to the path.
      *
      * @param e the edge to add.
-     * @throws IllegalArgumentException 
-     * 		if <tt>e</tt> is <tt>null</tt>
      */
     protected void addEdge(Edge e) {
-        if (e == null)
-        	throw new IllegalArgumentException("Edge is null");
-       
-        _edges.add(e);
-    }
-
-
-    /**
-     * Retrieves all the edges in this path.
-     *
-     * @return A list of edges.
-     */
-    public List getEdges() {
-        return (List) _edges.clone();
+        if (e == null) return;
+        if (getEndNode().equals(e.getBeginNode()))
+            _nodes.add(e.getEndNode());
+        else if (getEndNode().equals(e.getEndNode())) 
+            _nodes.add(e.getBeginNode());
+        else {
+            throw new IllegalArgumentException("Path.addEdge(): Invalid edge");
+        }
+        super.addEdge(e);
     }
 
 
@@ -135,10 +113,8 @@ public class Path implements Cloneable
      */
     public String toString(boolean heuristic, boolean cost, boolean f_value) {
         String s = new String("<B>");
-        
-        s += _startNode.toString();
-        for (Iterator it = _edges.iterator(); it.hasNext(); ) {
-            s += ((Edge) it.next()).getEndNode().toString();
+        for (Iterator it = _nodes.iterator(); it.hasNext(); ) {
+            s += it.next().toString();
         }
         s += "</B>";
         
@@ -167,30 +143,7 @@ public class Path implements Cloneable
         return s;
     }
 
-
-    /**
-     * Creates a copy of this path.
-     */
     public Object clone() {
-    	return new Path(this);
+    	return new UndirectedPath(this);
     }
-
-
-	/**
-	 * Checks if this path reaches the goal.
-	 * 
-	 * @return <tt>true</tt> if this path reaches the goal.
-	 */
-	public boolean goalReached() {
-		return contains(_graph.getGoalNode());
-	}
-	
-	/**
-	 * Returns the graph associated with this path.
-	 * 
-	 * @return the graph to which this path belongs.
-	 */
-	protected Graph getGraph() {
-		return _graph;
-	}
 }
