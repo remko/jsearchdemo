@@ -1,3 +1,5 @@
+package search;
+
 /**
  * Hill Climbing 2 algorithm.
  *

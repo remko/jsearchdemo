@@ -1,3 +1,5 @@
+package search;
+
 /**
  * A class to represent weighed edges.
  *

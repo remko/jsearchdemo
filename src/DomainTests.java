@@ -1,3 +1,5 @@
+import search.*;
+
 public class DomainTests
 {
     public static void main(String argv[]) {

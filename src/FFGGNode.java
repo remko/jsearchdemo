@@ -1,3 +1,5 @@
+import search.*;
+
 /**
  * A node for the <i>Farmer, Fox, Goose, Grain</i> problem.
  * The node represents a state of the world. The state is represented by one
@@ -9,7 +11,7 @@
  * @see FFGGGraph
  * @author Remko Tron&ccedil;on
  */
-public class FFGGNode extends Node
+public class FFGGNode extends search.Node
 {
     private char _state = 0;
 

@@ -5,6 +5,7 @@ import java.lang.reflect.*;
 import java.util.*;
 import java.awt.*;
 import java.awt.event.*;
+import search.*;
 
 class AlgorithmChoicePanel extends JPanel {
 

@@ -1,6 +1,6 @@
 import java.util.LinkedList;
 import java.util.List;
-
+import search.*;
 
 /**
  * A graph for the <i>Farmer, Fox, Goose and Grain</i> problem.
@@ -9,7 +9,7 @@ import java.util.List;
  *
  * @author Remko Tron&ccedil;on
  */
-public class FFGGGraph extends Graph
+public class FFGGGraph extends search.Graph
 {
     private FFGGNode _start = new FFGGNode();
     private FFGGNode _goal;

@@ -1,3 +1,5 @@
+import search.*;
+
 /**
  * A class to represent named nodes.
  *

@@ -1,3 +1,5 @@
+package search;
+
 import java.util.Iterator;
 import java.util.LinkedList;
 
@@ -77,16 +79,4 @@ public abstract class Algorithm
     public String getStateString() {
         return getQueue().toString();
     }
-    
-
-    /*public void addListener(AlgorithmListener l) {
-        _listeners.add(l);
-    }
-
-    
-    protected void notifyListeners() {
-        for (Iterator it = _listeners.iterator(); it.hasNext(); ) {
-            ((AlgorithmListener) it.next()).queueChanged();
-        }
-    }*/
 }

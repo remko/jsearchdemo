@@ -1,14 +1,16 @@
+package search;
+
 import java.util.List;
 
 
 /**
- * A depth first algorithm.
+ * A breadth first algorithm.
  *
  * @author Remko Tron&ccedil;on
  */
-public class DepthFirstAlgorithm extends Algorithm
+public class BreadthFirstAlgorithm extends Algorithm
 {
-    public DepthFirstAlgorithm(Graph graph) {
+    public BreadthFirstAlgorithm(Graph graph) {
         super(graph);
     }
     
@@ -16,6 +18,6 @@ public class DepthFirstAlgorithm extends Algorithm
     public void doStep() {
         Path p = getQueue().removeFirst();
         List children = p.getChildren();
-        getQueue().addFront(children);
+        getQueue().addBack(children);
     }
 }

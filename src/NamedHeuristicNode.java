@@ -1,3 +1,5 @@
+import search.*;
+
 public class NamedHeuristicNode extends NamedNode implements HeuristicNode
 {
     private int _heuristic;

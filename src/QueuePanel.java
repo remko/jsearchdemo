@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import search.*;
 
 class QueuePanel extends JPanel implements StateListener {
 

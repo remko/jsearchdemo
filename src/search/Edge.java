@@ -1,3 +1,5 @@
+package search;
+
 /**
  * A class to represent a basic edge.
  * Each edge has a begin- and an endnode.
