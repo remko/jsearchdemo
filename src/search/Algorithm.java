@@ -10,35 +10,35 @@ import java.util.LinkedList;
  */
 public abstract class Algorithm 
 {
-    private LinkedList _listeners = new LinkedList();
-    private Graph _graph;
-    private Queue _queue = new Queue();
+	private LinkedList _listeners = new LinkedList();
+	private Graph _graph;
+	private Queue _queue = new Queue();
 
-    /**
-     * Basic constructor.
-     * Sets target graph of the algorithm and initializes the queue with
-     * the start node of the graph.
-     * 
-     * @param graph the graph on which the algorithm is applied.
-     *              Cannot be <tt>null</tt>
-     */
-    public Algorithm(Graph graph) {
-        //assert graph != null;
-        _graph = graph;
+	/**
+	 * Basic constructor.
+	 * Sets target graph of the algorithm and initializes the queue with
+	 * the start node of the graph.
+	 * 
+	 * @param graph the graph on which the algorithm is applied.
+	 *              Cannot be <tt>null</tt>
+	 */
+	public Algorithm(Graph graph) {
+		//assert graph != null;
+		_graph = graph;
         
-        Path p = new Path(graph,getGraph().getStartNode());
-        _queue.addFront(p);
-    }
+		Path p = new Path(graph,getGraph().getStartNode());
+		_queue.addFront(p);
+	}
 
     
-    /**
-     * Executes one loop of the algorithm.
-     * If the algorithm is finished, nothing is done.
-     */ 
-    public void step() { 
-        if (!finished()) 
-            doStep();
-    }
+	/**
+	 * Executes one loop of the algorithm.
+	 * If the algorithm is finished, nothing is done.
+	 */ 
+	public void step() { 
+		if (!finished()) 
+			doStep();
+	}
 
     /**
      * Executes one loop of the algorithm.
