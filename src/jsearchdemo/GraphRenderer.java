@@ -5,8 +5,6 @@ import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.*;
 import java.util.*;
-import java.applet.*;
-import java.net.URL;
 import search.*;
 
 class GraphRenderer extends JPanel implements StateListener {

@@ -1,10 +1,6 @@
 package jsearchdemo;
 
-import search.*;
-
 import java.awt.event.*;
-import java.awt.*;
-import javax.swing.*;
 
 class DraggingState extends NormalState {
 

@@ -2,8 +2,6 @@ package jsearchdemo;
 
 import java.awt.event.*;
 import java.awt.*;
-import javax.swing.*;
-import java.text.*;
 
 class AddingNodeState extends State {
 

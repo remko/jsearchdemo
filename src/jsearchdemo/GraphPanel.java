@@ -3,9 +3,6 @@ package jsearchdemo;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-import java.util.*;
-import javax.swing.border.*;
-import java.net.URL;
 import search.*;
 
 public class GraphPanel extends JPanel implements StateListener {
