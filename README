@@ -1,5 +1,5 @@
-Building JSearchDemo with Ant:
-- Build (in /build): 'ant -f jsearchdemo.xml'
-- Create documentation: 'ant -f jsearchdemo.xml docs'
-- Create distributable files: 'ant -f jsearchdemo.xml dist'
-- Cleanup: 'ant -f jsearchdemo.xml clean'
+Building all projects with Ant:
+- Build (in /build): 'ant'
+- Create documentation: 'ant docs'
+- Create distributable files: 'ant dist'
+- Cleanup: 'ant clean'

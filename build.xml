@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+
+<!-- Ant build file for complete VisAI project -->
+
+<project name="VisAI" default="build" basedir=".">
+    <description>
+        Java applets and applications for visualizing AI algorithms
+    </description>
+
+    <target name="build">
+        <ant antfile="jsearchdemo.xml" target="build"/>
+    </target>
+    
+    <target name="docs">
+        <ant antfile="jsearchdemo.xml" target="docs"/>
+    </target>
+    
+    <target name="dist">
+        <ant antfile="jsearchdemo.xml" target="dist"/>
+    </target>
+    
+    <target name="clean">
+        <ant antfile="jsearchdemo.xml" target="clean"/>
+    </target>
+</project>
