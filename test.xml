@@ -1,0 +1,12 @@
+<graph name="Ons graafje">
+    <node name="A" heuristic="10">
+    <edge source="S" target="B" weight="8"/>
+
+    <startnode>
+        <node name="S" heuristic="12" position="0,10">
+    </startnode>
+    
+    <endnode>
+        <node name="F" heuristic="0" position="10,10">
+    </endnode>
+</graph>
