@@ -10,14 +10,14 @@ import java.util.List;
  */
 public class DepthFirstAlgorithm extends Algorithm
 {
-    public DepthFirstAlgorithm(Graph graph) {
-        super(graph);
-    }
-    
-    
-    public void doStep() {
-        Path p = getQueue().removeFirst();
-        List children = p.getChildren();
-        getQueue().addFront(children);
-    }
+	public DepthFirstAlgorithm(Graph graph) {
+		super(graph);
+	}
+	
+	
+	public void doStep() {
+		Path p = getQueue().removeFirst();
+		List children = p.getChildren();
+		getQueue().addFront(children);
+	}
 }

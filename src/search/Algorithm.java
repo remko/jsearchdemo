@@ -45,25 +45,24 @@ public abstract class Algorithm
 	protected abstract void doStep();
     
 	/**
-     * Checks if the algorithm is finished.
-     *
-     * @return <tt>true</tt> if the algorithm is finished (i.e. the queue is 
-     *     	 	empty or the goal is reached), false otherwise.
-     */
+	 * Checks if the algorithm is finished.
+	 *
+	 * @return <tt>true</tt> if the algorithm is finished (i.e. the queue is 
+	 *			empty or the goal is reached), false otherwise.
+	 */
 	public boolean finished() {
 		return (getQueue().isEmpty() || getQueue().goalReached());
-		
 	}
-    
-    
+	
+	
 	/**
 	 * Retrieves the graph the algorithm is working on.
 	 */
 	public Graph getGraph() { 
 		return _graph; 
 	}
-    
-    
+	
+	
 	/**
 	 * Retrieves the current queue of the algorithm.
 	 */

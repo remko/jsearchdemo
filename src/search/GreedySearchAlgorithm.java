@@ -10,42 +10,42 @@ import java.util.Comparator;
  */
 public class GreedySearchAlgorithm extends Algorithm
 {
-    public GreedySearchAlgorithm(Graph graph) {
-        super(graph);
-    }
-    
-    
-    public void doStep() {
-        Path path = getQueue().removeFirst();
-        List children = path.getChildren();
-        getQueue().addFront(children);
-        getQueue().sort(new PathComparator());
-    }
+	public GreedySearchAlgorithm(Graph graph) {
+		super(graph);
+	}
+	
+	
+	public void doStep() {
+		Path path = getQueue().removeFirst();
+		List children = path.getChildren();
+		getQueue().addFront(children);
+		getQueue().sort(new PathComparator());
+	}
 
 
-    private int computeHeuristic(Node n) {
-        int h = 0;
-        try {
-            h = ((HeuristicNode) n).getHeuristic();
-        }
-        catch (ClassCastException e) { }
-        return h;
-    }
-    
-    
-    /**
-     * Retrieves the textual representation of the state of the algorithm.
-     */
-    public String getStateString() {
-        return getQueue().toString(true,false,false);
-    }
+	private int computeHeuristic(Node n) {
+		int h = 0;
+		try {
+			h = ((HeuristicNode) n).getHeuristic();
+		}
+		catch (ClassCastException e) { }
+		return h;
+	}
+	
+	
+	/**
+	 * Retrieves the textual representation of the state of the algorithm.
+	 */
+	public String getStateString() {
+		return getQueue().toString(true,false,false);
+	}
 
-    
-    private class PathComparator implements Comparator
-    {
-        public int compare(Object o1, Object o2) {
-            return computeHeuristic(((Path) o1).getEndNode()) - 
-                        computeHeuristic(((Path) o2).getEndNode());
-        }
-    }
+	
+	private class PathComparator implements Comparator
+	{
+		public int compare(Object o1, Object o2) {
+			return computeHeuristic(((Path) o1).getEndNode()) - 
+						computeHeuristic(((Path) o2).getEndNode());
+		}
+	}
 }

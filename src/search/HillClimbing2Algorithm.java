@@ -7,7 +7,7 @@ package search;
  */
 public class HillClimbing2Algorithm extends BeamSearchAlgorithm
 {
-    public HillClimbing2Algorithm(Graph graph) {
-        super(graph,1);
-    }
+	public HillClimbing2Algorithm(Graph graph) {
+		super(graph,1);
+	}
 }

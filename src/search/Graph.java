@@ -11,12 +11,12 @@ public abstract class Graph
 {
 	public abstract Node getStartNode();
 	public abstract Node getGoalNode();
-    
+	
 	/**
 	 * Retrieves the outgoing edges of a given node.
 	 *
 	 * @param n The node to retrieve the outgoing edges from. Cannot be 
-	 *           <tt>null</tt>
+	 *			 <tt>null</tt>
 	 * @return The list of outgoing edges.
 	 */
 	public abstract List getOutgoingEdges(Node n);
