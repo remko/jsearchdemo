@@ -21,10 +21,10 @@ JAR_FILE=JSearchDemo.jar
 MANIFEST_FILE=$(SRC_DIR)/Manifest.mf
 
 JAVADOC_SOURCES=$(filter-out \
-					%/AlgorithmListener.java %/StateListener.java \
-					%/DomainTests.java \
-					%/GraphPanel.java %/LookMommyImAnApplet.java \
-					,$(wildcard $(SRC_DIR)/*.java))
+			%/AlgorithmListener.java %/StateListener.java \
+			%/DomainTests.java \
+			%/GraphPanel.java %/LookMommyImAnApplet.java \
+			,$(wildcard $(SRC_DIR)/*.java))
 
 ZIP_FILE=JSearchDemo.zip
 
