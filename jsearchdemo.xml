@@ -3,60 +3,62 @@
 <!-- Ant build file for JSearchDemo -->
 
 <project name="JSearchDemo" default="build" basedir=".">
-    <description>
-        A Java applet and application for visualizing several search algorithms
-    </description>
+	<description>
+		A Java applet and application for visualizing several search algorithms
+	</description>
 
-    <!-- Global properties -->
-    <property name="docs" location="docs"/>
-    <property name="src" location="src"/>
-    <property name="build" location="build"/>
-    <property name="dist"  location="dist"/>
+	<!-- Global properties -->
+	<property name="docs" location="doc"/>
+	<property name="src" location="src"/>
+	<property name="build" location="build"/>
+	<property name="dist"  location="dist"/>
 
-    <!-- Building -->
-    <target name="build">
-        <tstamp/>
-        <mkdir dir="${build}"/>
-        <javac srcdir="${src}" destdir="${build}"/>
-        <manifest file="${build}/MANIFEST.MF">
-            <attribute name="Main-Class" value="jsearchdemo.GraphRenderer"/>
-        </manifest>
-    </target>
+	<!-- Building -->
+	<target name="build">
+		<tstamp/>
+		<mkdir dir="${build}"/>
+		<javac srcdir="${src}" destdir="${build}"/>
+		<manifest file="${build}/MANIFEST.MF">
+			<attribute name="Main-Class" value="jsearchdemo.GraphRenderer"/>
+		</manifest>
+	</target>
 
-    <!-- Documentation -->
-    <target name="docs">
-        <mkdir dir="${docs}"/>
-        <javadoc packagenames="search,jsearchdemo" 
-                 sourcepath="${src}" destdir="${docs}"
-                 nodeprecated="true" nodeprecatedlist="true" nohelp="true" />
-        <!-- linksource=yes zou leuk zijn. Pas vanaf ant 1.6 -->
-    </target>
+	<!-- Documentation -->
+	<target name="docs">
+		<mkdir dir="${docs}"/>
+		<javadoc packagenames="search,jsearchdemo" 
+				 sourcepath="${src}" destdir="${docs}"
+				 nodeprecated="true" nodeprecatedlist="true" nohelp="true" 
+				 linksource="yes"
+				 />
+		<!-- linksource=yes zou leuk zijn. Pas vanaf ant 1.6 -->
+	</target>
 
-    <!-- Distribution -->
-    <target name="dist" depends="build,docs">
-        <mkdir dir="${dist}"/>
-        <jar jarfile="${dist}/JSearchDemo-${DSTAMP}.jar" basedir="${build}"
-             manifest="${build}/MANIFEST.MF">
-            <exclude name="**/DomainTests.java"/>
-        </jar>
+	<!-- Distribution -->
+	<target name="dist" depends="build,docs">
+		<mkdir dir="${dist}"/>
+		<jar jarfile="${dist}/JSearchDemo-${DSTAMP}.jar" basedir="${build}"
+			 manifest="${build}/MANIFEST.MF">
+			<exclude name="**/DomainTests.java"/>
+		</jar>
 
-        <tar destfile="${dist}/JSearchDemo-${DSTAMP}-docs.tar.gz" compression="gzip">
-            <tarfileset dir="${docs}" prefix="jsearchdemo-docs"/>
-        </tar>
-            
-        <tar destfile="${dist}/JSearchDemo-${DSTAMP}.tar.gz" compression="gzip">
-            <tarfileset dir="." prefix="jsearchdemo/">
-                <include name="jsearchdemo.xml"/>
-                <include name="src/jsearchdemo/**"/>
-                <include name="src/search/**"/>
-            </tarfileset>
-        </tar>
-    </target>
+		<tar destfile="${dist}/JSearchDemo-${DSTAMP}-docs.tar.gz" compression="gzip">
+			<tarfileset dir="${docs}" prefix="jsearchdemo-docs"/>
+		</tar>
+			
+		<tar destfile="${dist}/JSearchDemo-${DSTAMP}.tar.gz" compression="gzip">
+			<tarfileset dir="." prefix="jsearchdemo/">
+				<include name="jsearchdemo.xml"/>
+				<include name="src/jsearchdemo/**"/>
+				<include name="src/search/**"/>
+			</tarfileset>
+		</tar>
+	</target>
 
-    <!-- Cleanup -->
-    <target name="clean">
-        <delete dir="${build}"/>
-        <delete dir="${dist}"/>
-        <delete dir="${docs}"/>
-    </target>
+	<!-- Cleanup -->
+	<target name="clean">
+		<delete dir="${build}"/>
+		<delete dir="${dist}"/>
+		<delete dir="${docs}"/>
+	</target>
 </project>
