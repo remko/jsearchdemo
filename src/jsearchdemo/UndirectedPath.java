@@ -1,4 +1,4 @@
-eackage jsearchdemo;
+package jsearchdemo;
 
 import java.util.List;
 import java.util.LinkedList;
