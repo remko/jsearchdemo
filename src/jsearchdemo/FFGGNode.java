@@ -13,102 +13,102 @@ package jsearchdemo;
  */
 public class FFGGNode extends search.Node
 {
-    private char _state = 0;
+	private char _state = 0;
 
 	/**
-     * The representation for the farmer.
-     */
-    public static final char farmer = 0x1;
+	 * The representation for the farmer.
+	 */
+	public static final char farmer = 0x1;
 
-    /**
-     * The representation for the fox.
-     */
-    public static final char fox = 0x2;
+	/**
+	 * The representation for the fox.
+	 */
+	public static final char fox = 0x2;
 
-    /**
-     * The representation for the goose.
-     */
-    public static final char goose = 0x4;
+	/**
+	 * The representation for the goose.
+	 */
+	public static final char goose = 0x4;
 
-    /**
-     * The representation for the grain.
-     */
-    public static final char grain = 0x8;
+	/**
+	 * The representation for the grain.
+	 */
+	public static final char grain = 0x8;
 
-    
-    /**
-     * Transports the given objects to the other side of the river
-     *
-     * @param objects the objects to transport
-     */
-    public void transport(int objects) {
-        _state ^= objects;
-    }
+	
+	/**
+	 * Transports the given objects to the other side of the river
+	 *
+	 * @param objects the objects to transport
+	 */
+	public void transport(int objects) {
+		_state ^= objects;
+	}
 
-    
-    /**
-     * Checks if objects are on the same side.
-     *
-     * @param objects the objects to check
-     * @return <tt>true</tt> if the objects are on the same bank of the river,
-     *         <tt>false</tt> otherwise.
-     */
-    public boolean onSameSide(int objects) {
-        return ((_state & objects) == 0 || (~_state & objects) == 0);
-    }
-
-
-    /**
-     * Creates a node representing the same state as the current.
-     */
-    public Object clone() {
-        FFGGNode n = new FFGGNode();
-        n._state = _state;
-        return n;
-    }
+	
+	/**
+	 * Checks if objects are on the same side.
+	 *
+	 * @param objects the objects to check
+	 * @return <tt>true</tt> if the objects are on the same bank of the river,
+	 *		   <tt>false</tt> otherwise.
+	 */
+	public boolean onSameSide(int objects) {
+		return ((_state & objects) == 0 || (~_state & objects) == 0);
+	}
 
 
-    /**
-     * Compares this node to another node for equality.
-     *
-     * @param o the object to compare with. 
-     * @return <tt>true</tt> if the other node is a FFGGNode representing the
-     *         same state as the current node.
-     */
-    public boolean equals(Object o) {
-        try {
-            return _state == ((FFGGNode) o)._state;
-        }
-        catch (ClassCastException e) {
-            return false;
-        }
-    }
-
-    
-    public int compareTo(Object o) {
-        if (o == null) 
-            return -1;
-        try {
-            return _state - ((FFGGNode) o)._state;
-        }
-        catch (ClassCastException e) {
-            return -1;
-        }
-    }
+	/**
+	 * Creates a node representing the same state as the current.
+	 */
+	public Object clone() {
+		FFGGNode n = new FFGGNode();
+		n._state = _state;
+		return n;
+	}
 
 
-    public String toString() {
-        String s = new String("[");
-        if ((_state & farmer) == 0) s += "Fa";
-        if ((_state & fox) == 0) s += "Fo";
-        if ((_state & goose) == 0) s += "Go";
-        if ((_state & grain) == 0) s += "Gr";
-        s += "|";
-        if ((_state & farmer) != 0) s += "Fa";
-        if ((_state & fox) != 0) s += "Fo";
-        if ((_state & goose) != 0) s += "Go";
-        if ((_state & grain) != 0) s += "Gr";
-        s += "]";
-        return s;
-    }
+	/**
+	 * Compares this node to another node for equality.
+	 *
+	 * @param o the object to compare with. 
+	 * @return <tt>true</tt> if the other node is a FFGGNode representing the
+	 *		   same state as the current node.
+	 */
+	public boolean equals(Object o) {
+		try {
+			return _state == ((FFGGNode) o)._state;
+		}
+		catch (ClassCastException e) {
+			return false;
+		}
+	}
+
+	
+	public int compareTo(Object o) {
+		if (o == null) 
+			return -1;
+		try {
+			return _state - ((FFGGNode) o)._state;
+		}
+		catch (ClassCastException e) {
+			return -1;
+		}
+	}
+
+
+	public String toString() {
+		String s = new String("[");
+		if ((_state & farmer) == 0) s += "Fa";
+		if ((_state & fox) == 0) s += "Fo";
+		if ((_state & goose) == 0) s += "Go";
+		if ((_state & grain) == 0) s += "Gr";
+		s += "|";
+		if ((_state & farmer) != 0) s += "Fa";
+		if ((_state & fox) != 0) s += "Fo";
+		if ((_state & goose) != 0) s += "Go";
+		if ((_state & grain) != 0) s += "Gr";
+		s += "]";
+		return s;
+	}
 }
