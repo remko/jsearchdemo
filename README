@@ -1,2 +1,5 @@
-To build, change the first part of the Makefile to use your favourite Java
-tools with your favourite options, and run 'make'.
+Building JSearchDemo with Ant:
+- Build (in /build): 'ant -f jsearchdemo.xml'
+- Create documentation: 'ant -f jsearchdemo.xml docs'
+- Create distributable files: 'ant -f jsearchdemo.xml dist'
+- Cleanup: 'ant -f jsearchdemo.xml clean'
