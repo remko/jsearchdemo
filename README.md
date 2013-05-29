@@ -1,3 +1,5 @@
+# JSearchDemo
+
 Building all projects with Ant:
 - Build (in /build): 'ant'
 - Create documentation: 'ant docs'
